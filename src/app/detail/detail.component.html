@@ -1,0 +1,29 @@
+
+
+<table  *ngIf="itemDetail">
+  <tr>
+    <td>
+      <img [src]="itemDetail.Poster" alt=""> 
+    </td>
+    <td>
+      <div>
+        <h1>{{itemDetail.Title}}</h1>
+        <div>Year: {{itemDetail.Year}}</div>
+        <div>Released: {{itemDetail.Released}}</div>
+        <div>Runtime: {{itemDetail.Runtime}}</div>
+        <div>Genre: {{itemDetail.Genre}}</div>
+        <div>Director: {{itemDetail.Director}}</div>
+        <div>Production: {{itemDetail.Production}}</div>
+      </div>      
+      <br/>
+      <button (click)="pageSearch()">На страницу поиска</button>
+    </td>
+  </tr>
+</table>
+
+
+
+
+  
+
+  

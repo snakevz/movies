@@ -1,0 +1,28 @@
+<table>
+    <tr>
+      <td>
+        <div>
+          <input type="text" name="" id="" placeholder="поиск фильма..."  [(ngModel)]="searchValue" >
+          <button (click)="searchGo()">Поиск фильма</button>
+        </div>
+        
+        <div *ngIf="itemResult">
+          <h2>{{itemResult.Title}}</h2>
+          <img [src]="itemResult.Poster" alt=""/> 
+          <br/><br/>
+          <button [routerLink]="['/detail', itemResult.imdbID]">Детально...</button>
+          <button (click)="saveItem()">+ Добавить в список</button>
+        </div>      
+      </td>
+      <td *ngIf="itemsList.length>0">
+        <h2>Мой список:</h2>
+        <div *ngFor="let item of itemsList;let index = index">
+          <h3>{{item.Title}}</h3>
+          <img [src]="item.Poster" alt="" style="width:100px;"/>
+          <br/><br/>
+          <button [routerLink]="['/detail', item.imdbID]">Детально...</button>  
+          <button (click)="deleteItem()">Удалить из списка</button>        
+        </div>
+      </td>
+    </tr>
+  </table>
