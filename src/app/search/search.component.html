@@ -5,13 +5,14 @@
           <input type="text" name="" id="" placeholder="поиск фильма..."  [(ngModel)]="searchValue" >
           <button (click)="searchGo()">Поиск фильма</button>
         </div>
-        
-        <div *ngIf="itemResult">
-          <h2>{{itemResult.Title}}</h2>
-          <img [src]="itemResult.Poster" alt=""/> 
-          <br/><br/>
-          <button [routerLink]="['/detail', itemResult.imdbID]">Детально...</button>
-          <button (click)="saveItem()">+ Добавить в список</button>
+        <div *ngIf="itemsResult"> 
+          <div *ngFor="let item of itemsResult.Search;let index = index">
+            <h2>{{item.Title}}</h2>
+            <img [src]="item.Poster" alt=""/> 
+            <br/><br/>
+            <button [routerLink]="['/detail', item.imdbID]">Детально...</button>
+            <button (click)="saveItem(index)">+ Добавить в список</button>
+          </div>
         </div>      
       </td>
       <td *ngIf="itemsList.length>0">

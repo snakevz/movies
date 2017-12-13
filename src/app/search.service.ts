@@ -10,7 +10,7 @@ export class SearchService {
   constructor(private httpClient:HttpClient) { }
 
   getMovies(titleSearch){
-    return this.httpClient.get<any[]>(this.baseUrl + '&t=' + titleSearch);
+    return this.httpClient.get<any[]>(this.baseUrl + '&s=' + titleSearch);
   }  
 
   getById(id){

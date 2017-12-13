@@ -10,7 +10,8 @@ import { SearchService } from "../search.service";
 export class SearchComponent implements OnInit {
 
   searchValue:string = "game";
-  itemResult:any;
+
+  itemsResult:any;
   itemsList:any[] = [];
   
   constructor(private searchService:SearchService){}
@@ -19,15 +20,20 @@ export class SearchComponent implements OnInit {
   }  
 
   searchGo(){
+    //let res;
     this.searchService.getMovies(this.searchValue).subscribe(
-      (items) => this.itemResult = items
+      (result) => this.itemsResult = result
     );
+    //this.itemsResult = res;
+    //console.log(this.queryResult);
   }
-  saveItem(){
-    if(!this.itemsList.find(x => x.Title === this.itemResult.Title)){
-      this.itemsList.push(this.itemResult);
+  
+  saveItem(index){
+    if(!this.itemsList.find(x => x.Title === this.itemsResult.Search[index].Title)){
+      this.itemsList.push(this.itemsResult.Search[index]);
     }
   }
+
   deleteItem(index){
     this.itemsList.splice(index, 1);
   }  
